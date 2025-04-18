@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Image, View, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import GradientWrapper from "../GradientWrapper";
-import { icons } from "../../../utility/icons";
+import { icons } from "../../../constants/icons";
 
 /**
  * CreateButton Component

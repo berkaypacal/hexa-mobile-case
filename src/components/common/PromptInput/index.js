@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "./styles";
 import { colors } from "../../../theme/colors";
 import GradientWrapper from "../GradientWrapper";
-import { icons } from "../../../utility/icons";
+import { icons } from "../../../constants/icons";
 import { strings } from "../../../constants/strings";
 
 /**

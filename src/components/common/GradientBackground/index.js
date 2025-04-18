@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, View } from "react-native";
 import styles from "./styles";
-import { images } from "../../../utility/images";
+import { images } from "../../../constants/images";
 
 /**
  * GradientBackground Component

@@ -1,4 +1,4 @@
-import { STATUS } from "../constants/status";
+import { STATUS } from "../constants/status.enum";
 
 /**
  * Returns a normalized status string based on mutation state.

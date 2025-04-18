@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { icons } from "../../../utility/icons";
 import styles from "./styles";
 import GradientWrapper from "../GradientWrapper";
-import { STATUS } from "../../../constants/status";
 import { strings } from "../../../constants/strings";
 import CircularLoader from "../CustomLoader";
+import { icons } from "../../../constants/icons";
+import { STATUS } from "../../../constants/status.enum";
 
 /**
  * StatusChip Component

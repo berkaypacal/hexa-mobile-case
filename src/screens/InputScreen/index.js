@@ -10,15 +10,15 @@ import StylePicker from "../../components/common/StylePicker";
 import PromptInput from "../../components/common/PromptInput";
 import GradientBackground from "../../components/common/GradientBackground";
 import CreateButton from "../../components/common/CreateButton";
-import { images } from "../../utility/images";
+import { images } from "../../constants/images";
 import { useGenerateMockImage } from "../../hooks/useGenerateMockImage";
 import { useStyleList } from "../../hooks/useStyleList";
 import { colors } from "../../theme/colors";
 import { dummyData } from "../../constants/dummyData";
 import StatusChip from "../../components/common/StatusChip";
-import { getStatus } from "../../utility/statusHelper";
-import { STATUS } from "../../constants/status";
+import { STATUS } from "../../constants/status.enum";
 import { AppContext } from "../../context/AppContext";
+import { getStatus } from "../../utility/statusHelper";
 
 const InputScreen = ({ navigation }) => {
   const [prompt, setPrompt] = useState("");

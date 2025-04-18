@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import styles from "./styles";
 import GradientWrapper from "../GradientWrapper";
-import { icons } from "../../../utility/icons";
+import { icons } from "../../../constants/icons";
 import { strings } from "../../../constants/strings";
 
 /**
