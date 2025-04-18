@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  ActivityIndicator,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { icons } from "../../../utility/icons";
 import styles from "./styles";
 import GradientWrapper from "../GradientWrapper";
 import { STATUS } from "../../../constants/status";
 import { strings } from "../../../constants/strings";
-import { colors } from "../../../theme/colors";
+import CircularLoader from "../CustomLoader";
 
 /**
  * StatusChip Component
@@ -39,7 +33,7 @@ const StatusChip = ({ status, onPress, imageUrl }) => {
 
   if (status === STATUS.LOADING) {
     return renderContent({
-      leftContent: <ActivityIndicator size="small" color={colors.dark50} />,
+      leftContent: <CircularLoader />,
       leftStyle: styles.loadingLeftBlock,
       rightStyle: styles.loadingRightBlock,
       rightContent: (
