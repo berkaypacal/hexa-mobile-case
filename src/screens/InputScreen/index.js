@@ -17,6 +17,7 @@ import { colors } from "../../theme/colors";
 import { dummyData } from "../../constants/dummyData";
 import StatusChip from "../../components/common/StatusChip";
 import { getStatus } from "../../utility/statusHelper";
+import { STATUS } from "../../constants/status";
 
 const InputScreen = ({ navigation }) => {
   const [prompt, setPrompt] = useState("");
@@ -74,7 +75,7 @@ const InputScreen = ({ navigation }) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
           <View>
-            {status !== "idle" && (
+            {status !== STATUS.IDLE && (
               <StatusChip
                 status={status}
                 onPress={isError ? handleCreate : handleOutputPress}

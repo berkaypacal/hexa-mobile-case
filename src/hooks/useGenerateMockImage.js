@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import axiosInstance from "../api";
+import { generateMockImage } from "../api/generateMockImage";
 
 /**
  * useGenerateMockImage
@@ -18,11 +18,6 @@ import axiosInstance from "../api";
  */
 export const useGenerateMockImage = () => {
   return useMutation({
-    mutationFn: async ({ prompt }) => {
-      const response = await axiosInstance.post("/generateMockImage", {
-        prompt,
-      });
-      return response.data;
-    },
+    mutationFn: generateMockImage,
   });
 };
