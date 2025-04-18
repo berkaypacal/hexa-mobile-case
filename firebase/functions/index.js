@@ -20,7 +20,7 @@ exports.generateMockImage = functions.https.onRequest((req, res) => {
 
       const docRef = await addMockGeneration(prompt);
 
-      const delay = Math.floor(Math.random() * 5000) + 5000;
+      const delay = Math.floor(Math.random() * 30000) + 30000;
       await new Promise((resolve) => setTimeout(resolve, delay));
 
       await updateMockGeneration(docRef.id, {
