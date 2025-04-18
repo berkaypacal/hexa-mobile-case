@@ -1,9 +1,17 @@
-import React, { useState, useCallback, useMemo, useContext } from "react";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useContext,
+  useRef,
+  useEffect,
+} from "react";
 import {
   View,
   Keyboard,
   TouchableWithoutFeedback,
   ActivityIndicator,
+  Animated,
 } from "react-native";
 import styles from "./styles";
 import StylePicker from "../../components/common/StylePicker";
@@ -48,6 +56,7 @@ const InputScreen = ({ navigation }) => {
   }, []);
 
   const handleCreate = () => {
+    Keyboard.dismiss();
     mutate({ prompt });
   };
 
@@ -63,6 +72,20 @@ const InputScreen = ({ navigation }) => {
   };
 
   const status = getStatus({ isPending, isError, isSuccess, data });
+
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (status !== STATUS.IDLE) {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      fadeAnim.setValue(0);
+    }
+  }, [status]);
 
   if (stylesLoading) {
     return (
@@ -80,11 +103,13 @@ const InputScreen = ({ navigation }) => {
         <View style={styles.container}>
           <View>
             {status !== STATUS.IDLE && (
-              <StatusChip
-                status={status}
-                onPress={isError ? handleCreate : handleOutputPress}
-                imageUrl={data?.imageUrl}
-              />
+              <Animated.View style={{ opacity: fadeAnim }}>
+                <StatusChip
+                  status={status}
+                  onPress={isError ? handleCreate : handleOutputPress}
+                  imageUrl={data?.imageUrl}
+                />
+              </Animated.View>
             )}
 
             <PromptInput
