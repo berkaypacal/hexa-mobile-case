@@ -25,13 +25,15 @@ exports.generateMockImage = functions.https.onRequest((req, res) => {
 
       await updateMockGeneration(docRef.id, {
         status: "done",
-        imageUrl: "https://picsum.photos/300/200",
+        imageUrl:
+          "https://www.logoai.com/uploads/output/2025/03/02/fa93a8ba1c637267c574643c934c9ca4.jpg",
       });
 
       return res.status(200).json({
         status: "done",
         id: docRef.id,
-        imageUrl: "https://picsum.photos/300/200",
+        imageUrl:
+          "https://www.logoai.com/uploads/output/2025/03/02/fa93a8ba1c637267c574643c934c9ca4.jpg",
       });
     } catch (error) {
       console.error("Function error:", error);
