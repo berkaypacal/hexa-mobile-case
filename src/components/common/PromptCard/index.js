@@ -4,6 +4,7 @@ import * as Clipboard from "expo-clipboard";
 import styles from "./styles";
 import GradientWrapper from "../GradientWrapper";
 import { icons } from "../../../utility/icons";
+import { strings } from "../../../constants/strings";
 
 /**
  * PromptCard Component
@@ -31,11 +32,11 @@ const PromptCard = ({ prompt }) => {
     <View style={styles.card}>
       <GradientWrapper style={styles.gradientOverlay} />
       <View style={styles.row}>
-        <Text style={styles.label}>Prompt</Text>
+        <Text style={styles.label}>{strings.promptLabel}</Text>
 
         <TouchableOpacity style={styles.copyWrapper} onPress={handleCopy}>
           <Image source={icons.copy} style={styles.copyIcon} />
-          <Text style={styles.copyText}>Copy</Text>
+          <Text style={styles.copyText}>{strings.copy}</Text>
         </TouchableOpacity>
       </View>
 
@@ -44,7 +45,7 @@ const PromptCard = ({ prompt }) => {
       </Text>
 
       <View style={styles.styleChip}>
-        <Text style={styles.styleChipText}>Monogram</Text>
+        <Text style={styles.styleChipText}>{strings.monogramStyle}</Text>
       </View>
     </View>
   );

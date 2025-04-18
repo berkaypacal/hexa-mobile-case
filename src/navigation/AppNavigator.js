@@ -5,6 +5,7 @@ import InputScreen from "../screens/InputScreen";
 import OutputScreen from "../screens/OutputScreen";
 import { StatusBar } from "expo-status-bar";
 import CustomHeader from "../components/common/CustomHeader";
+import { strings } from "../constants/strings";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,9 @@ export default function AppNavigator() {
           name="Input"
           component={InputScreen}
           options={{
-            header: () => <CustomHeader title="AI Logo" fontSize={17} center />,
+            header: () => (
+              <CustomHeader title={strings.aiLogoHeader} fontSize={17} center />
+            ),
           }}
         />
         <Stack.Screen
@@ -28,7 +31,7 @@ export default function AppNavigator() {
             animationDuration: 400,
             header: () => (
               <CustomHeader
-                title="Your Design"
+                title={strings.yourDesignHeader}
                 fontSize={22}
                 onClose={() => navigation.goBack()}
               />

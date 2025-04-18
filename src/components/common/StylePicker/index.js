@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import styles from "./styles";
+import { strings } from "../../../constants/strings";
 
 /**
  * StylePicker Component
@@ -58,7 +59,7 @@ const StylePicker = ({ selectedStyle, setSelectedStyle, stylesList }) => {
 
   return (
     <View>
-      <Text style={styles.title}>Logo Styles</Text>
+      <Text style={styles.title}>{strings.logoStylesTitle}</Text>
 
       <View style={styles.list}>
         <FlatList

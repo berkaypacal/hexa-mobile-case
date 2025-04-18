@@ -6,6 +6,7 @@ import PromptInput from "../../components/common/PromptInput";
 import GradientBackground from "../../components/common/GradientBackground";
 import CreateButton from "../../components/common/CreateButton";
 import { images } from "../../utility/images";
+import { strings } from "../../constants/strings";
 
 const surprisePrompts = [
   "A blue lion logo reading 'HEXA' in bold letters",
@@ -16,22 +17,22 @@ const surprisePrompts = [
 const stylesList = [
   {
     id: "none",
-    label: "No Style",
+    label: strings.noStyle,
     icon: images.noStyle,
   },
   {
     id: "monogram",
-    label: "Monogram",
+    label: strings.monogramStyle,
     icon: images.monogram,
   },
   {
     id: "abstract",
-    label: "Abstract",
+    label: strings.abstractStyle,
     icon: images.abstract,
   },
   {
     id: "mascot",
-    label: "Mascot",
+    label: strings.mascotStyle,
     icon: images.mascot,
   },
 ];

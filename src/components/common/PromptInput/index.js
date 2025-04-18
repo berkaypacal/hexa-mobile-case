@@ -4,6 +4,7 @@ import styles from "./styles";
 import { colors } from "../../../theme/colors";
 import GradientWrapper from "../GradientWrapper";
 import { icons } from "../../../utility/icons";
+import { strings } from "../../../constants/strings";
 
 /**
  * PromptInput Component
@@ -29,13 +30,13 @@ const PromptInput = ({ prompt, setPrompt, onSurprisePress }) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.header}>
-        <Text style={styles.title}>Enter Your Prompt</Text>
+        <Text style={styles.title}>{strings.enterPromptTitle}</Text>
         <TouchableOpacity
           onPress={onSurprisePress}
           style={styles.surpriseWrapper}
         >
           <Image source={icons.dice} style={styles.diceIcon} />
-          <Text style={styles.surpriseText}>Surprise me</Text>
+          <Text style={styles.surpriseText}>{strings.surpriseMe}</Text>
         </TouchableOpacity>
       </View>
 
@@ -48,7 +49,7 @@ const PromptInput = ({ prompt, setPrompt, onSurprisePress }) => {
         <GradientWrapper style={styles.gradientOverlay} />
 
         <TextInput
-          placeholder="Ex. A blue lion logo reading ‘HEXA’ in bold letters"
+          placeholder={strings.placeholderText}
           placeholderTextColor={colors.dark500}
           multiline
           scrollEnabled
