@@ -1,6 +1,10 @@
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import AppNavigator from "./src/navigation/AppNavigator";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Manrope: require("./assets/fonts/Manrope-Regular.ttf"),
@@ -12,5 +16,9 @@ export default function App() {
 
   SplashScreen.hideAsync();
 
-  return <AppNavigator />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppNavigator />
+    </QueryClientProvider>
+  );
 }
