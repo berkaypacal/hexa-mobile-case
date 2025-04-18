@@ -11,4 +11,10 @@ export const strings = {
   mascotStyle: "Mascot",
   aiLogoHeader: "AI Logo",
   yourDesignHeader: "Your Design",
+  creatingDesign: "Creating Your Design...",
+  readyInTwoMinutes: "Ready in 2 minutes",
+  errorTitle: "Oops, something went wrong!",
+  errorSubtitle: "Click to try again.",
+  successTitle: "Your Design is Ready!",
+  successSubtitle: "Tap to see it.",
 };

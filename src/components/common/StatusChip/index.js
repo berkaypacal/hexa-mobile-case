@@ -10,6 +10,8 @@ import { icons } from "../../../utility/icons";
 import styles from "./styles";
 import GradientWrapper from "../GradientWrapper";
 import { STATUS } from "../../../constants/status";
+import { strings } from "../../../constants/strings";
+import { colors } from "../../../theme/colors";
 
 /**
  * StatusChip Component
@@ -37,14 +39,14 @@ const StatusChip = ({ status, onPress, imageUrl }) => {
 
   if (status === STATUS.LOADING) {
     return renderContent({
-      leftContent: <ActivityIndicator size="small" color="white" />,
+      leftContent: <ActivityIndicator size="small" color={colors.dark50} />,
       leftStyle: styles.loadingLeftBlock,
       rightStyle: styles.loadingRightBlock,
       rightContent: (
         <>
           <GradientWrapper style={styles.gradientOverlay} />
-          <Text style={styles.title}>Creating Your Design...</Text>
-          <Text style={styles.subtitle}>Ready in 2 minutes</Text>
+          <Text style={styles.title}>{strings.creatingDesign}</Text>
+          <Text style={styles.subtitle}>{strings.readyInTwoMinutes}</Text>
         </>
       ),
     });
@@ -58,8 +60,8 @@ const StatusChip = ({ status, onPress, imageUrl }) => {
       rightStyle: styles.errorRightBlock,
       rightContent: (
         <>
-          <Text style={styles.title}>Oops, something went wrong!</Text>
-          <Text style={styles.errorSubtitle}>Click to try again.</Text>
+          <Text style={styles.title}>{strings.errorTitle}</Text>
+          <Text style={styles.errorSubtitle}>{strings.errorSubtitle}</Text>
         </>
       ),
     });
@@ -76,8 +78,8 @@ const StatusChip = ({ status, onPress, imageUrl }) => {
       rightContent: (
         <>
           <GradientWrapper style={styles.successGradientOverlay} />
-          <Text style={styles.title}>Your Design is Ready!</Text>
-          <Text style={styles.successSubtitle}>Tap to see it.</Text>
+          <Text style={styles.title}>{strings.successTitle}</Text>
+          <Text style={styles.successSubtitle}>{strings.successSubtitle}</Text>
         </>
       ),
     });
