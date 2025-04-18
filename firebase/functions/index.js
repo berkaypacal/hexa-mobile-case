@@ -6,6 +6,9 @@ const {
   updateMockGeneration,
 } = require("./services/firestore");
 
+const admin = require("firebase-admin");
+const db = admin.firestore();
+
 exports.generateMockImage = functions.https.onRequest((req, res) => {
   cors(req, res, async () => {
     try {
@@ -33,6 +36,28 @@ exports.generateMockImage = functions.https.onRequest((req, res) => {
     } catch (error) {
       console.error("Function error:", error);
       return res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+});
+
+exports.getStyleList = functions.https.onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const snapshot = await db.collection("styles").get();
+
+      let styles = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      styles = styles.sort((a, b) =>
+        a.id === "none" ? -1 : b.id === "none" ? 1 : 0
+      );
+
+      return res.status(200).json(styles);
+    } catch (error) {
+      console.error("Failed to fetch styles:", error);
+      return res.status(500).json({ error: "Failed to fetch styles" });
     }
   });
 });
