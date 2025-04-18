@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import InputScreen from "../screens/InputScreen";
 import OutputScreen from "../screens/OutputScreen";
 import { StatusBar } from "expo-status-bar";
+import CustomHeader from "../components/common/CustomHeader";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,8 +13,28 @@ export default function AppNavigator() {
     <NavigationContainer>
       <StatusBar style="light" />
       <Stack.Navigator initialRouteName="Input">
-        <Stack.Screen name="Input" component={InputScreen} />
-        <Stack.Screen name="Output" component={OutputScreen} />
+        <Stack.Screen
+          name="Input"
+          component={InputScreen}
+          options={{
+            header: () => <CustomHeader title="AI Logo" fontSize={17} center />,
+          }}
+        />
+        <Stack.Screen
+          name="Output"
+          component={OutputScreen}
+          options={({ navigation }) => ({
+            animation: "slide_from_bottom",
+            animationDuration: 400,
+            header: () => (
+              <CustomHeader
+                title="Your Design"
+                fontSize={22}
+                onClose={() => navigation.goBack()}
+              />
+            ),
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
