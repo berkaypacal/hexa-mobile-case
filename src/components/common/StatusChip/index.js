@@ -10,13 +10,32 @@ import CircularLoader from "../CustomLoader";
 /**
  * StatusChip Component
  *
- * Displays dynamic visual feedback for image generation status.
+ * Visually represents the status of the image generation process.
+ * Displays one of three states: loading (spinner), error (alert icon with retry),
+ * or success (generated image with navigation).
  *
- * @param {Object} props
- * @param {string} props.status - One of GENERATION_STATUS.LOADING | ERROR | SUCCESS
- * @param {Function} props.onPress - Action when chip is tapped (retry or navigate)
- * @param {string} [props.imageUrl] - URL for the generated image (only for success)
+ * Each state consists of a left icon/image and a right description section.
+ * The right section may optionally include a gradient overlay.
+ *
+ * - LOADING: Shows a custom spinning loader and text "Creating Your Design...".
+ * - ERROR: Shows an alert icon and error message with retry capability.
+ * - SUCCESS: Displays the generated image and a success message with navigation.
+ *
+ * @component
+ *
+ * @param {Object} props - Props for the component.
+ * @param {('loading'|'error'|'success')} props.status - The current status of generation (from STATUS enum).
+ * @param {Function} props.onPress - Called when the component is pressed (retry or view result).
+ * @param {string} [props.imageUrl] - URL of the generated image (only required for success state).
+ *
+ * @example
+ * <StatusChip status={STATUS.LOADING} />
+ * <StatusChip status={STATUS.ERROR} onPress={handleRetry} />
+ * <StatusChip status={STATUS.SUCCESS} imageUrl={url} onPress={handleNavigate} />
+ *
+ * @returns {JSX.Element | null} A UI card based on the status.
  */
+
 const StatusChip = ({ status, onPress, imageUrl }) => {
   const renderContent = ({
     leftContent,

@@ -9,18 +9,28 @@ import { strings } from "../../../constants/strings";
 /**
  * PromptInput Component
  *
- * A reusable input field component designed for collecting user prompts
- * with optional surprise generation support. Includes a live character counter
- * and handles UI states such as focus, max length, and dynamic coloring.
+ * A reusable styled input field for collecting text-based prompts from users.
+ * Displays a title, a "Surprise me" button to autofill sample prompts, and a
+ * multiline input field with a live character counter.
+ *
+ * The component handles focus state for visual styling and applies a gradient
+ * overlay behind the text input for enhanced aesthetics.
  *
  * @component
  *
- * @param {Object} props - Props passed to the component.
- * @param {string} props.prompt - The current prompt value.
- * @param {function} props.setPrompt - Function to update the prompt state.
- * @param {function} props.onSurprisePress - Function to be called when the "Surprise me" button is pressed.
+ * @param {Object} props - Component props.
+ * @param {string} props.prompt - The current prompt input value.
+ * @param {function(string): void} props.setPrompt - Callback to update the prompt state.
+ * @param {function(): void} props.onSurprisePress - Called when "Surprise me" is pressed.
  *
- * @returns {JSX.Element} A styled text input with title, surprise button, and character counter.
+ * @example
+ * <PromptInput
+ *   prompt={prompt}
+ *   setPrompt={setPrompt}
+ *   onSurprisePress={handleSurprise}
+ * />
+ *
+ * @returns {JSX.Element} Rendered prompt input component.
  */
 
 const PromptInput = ({ prompt, setPrompt, onSurprisePress }) => {
