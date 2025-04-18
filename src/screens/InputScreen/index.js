@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useContext } from "react";
 import {
   View,
   Keyboard,
@@ -18,10 +18,13 @@ import { dummyData } from "../../constants/dummyData";
 import StatusChip from "../../components/common/StatusChip";
 import { getStatus } from "../../utility/statusHelper";
 import { STATUS } from "../../constants/status";
+import { AppContext } from "../../context/AppContext";
 
 const InputScreen = ({ navigation }) => {
   const [prompt, setPrompt] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("none");
+
+  const { setImageData } = useContext(AppContext);
 
   const { data: stylesListFromServer, isLoading: stylesLoading } =
     useStyleList();
@@ -50,11 +53,12 @@ const InputScreen = ({ navigation }) => {
 
   const handleOutputPress = () => {
     if (data) {
-      navigation.navigate("Output", {
+      setImageData({
+        imageUrl: data.imageUrl,
         prompt,
         style: selectedStyle,
-        imageUrl: data.imageUrl,
       });
+      navigation.navigate("Output");
     }
   };
 

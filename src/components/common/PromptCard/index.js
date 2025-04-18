@@ -16,14 +16,15 @@ import { strings } from "../../../constants/strings";
  *
  * @param {Object} props - Component props.
  * @param {string} props.prompt - The prompt text entered by the user to be displayed and copied.
+ * @param {string} props.selectedStyle - The selected style to be displayed dynamically.
  *
  * @example
- * <PromptCard prompt="A bold logo for HEXA with a futuristic touch" />
+ * <PromptCard prompt="A bold logo for HEXA with a futuristic touch" selectedStyle="monogram" />
  *
  * @returns {JSX.Element} A styled card showing the prompt with a copy button and style tag.
  */
 
-const PromptCard = ({ prompt }) => {
+const PromptCard = ({ prompt, selectedStyle }) => {
   const handleCopy = () => {
     Clipboard.setStringAsync(prompt);
   };
@@ -45,7 +46,9 @@ const PromptCard = ({ prompt }) => {
       </Text>
 
       <View style={styles.styleChip}>
-        <Text style={styles.styleChipText}>{strings.monogramStyle}</Text>
+        <Text style={styles.styleChipText}>
+          {strings[selectedStyle + "Style"] || strings.noStyle}
+        </Text>
       </View>
     </View>
   );
